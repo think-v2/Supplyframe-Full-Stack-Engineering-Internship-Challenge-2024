@@ -20,7 +20,7 @@
  ```ctrl+c``` to close
  
  ### Step 6 (Optional)
- Execute ```jest.bat``` to jest test the function used to package players
+ Execute ```jest.bat``` to jest test the function used to package players<br />
  Note: Make sure to close ```run.bat``` before using this or it will not work
 
 # Technical Feature List
