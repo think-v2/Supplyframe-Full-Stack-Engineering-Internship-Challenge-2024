@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= year%> Valorant Esports Teams</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+
+    <script src="javascripts/fetchInfo.js"></script>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col p-0">
+                <div class="red-bg d-flex align-items-center justify-content-center flex-column">
+                    <div class="row removeMargin">
+                        <h1><%= year%> Valorant Esports Teams</h1>
+                    </div>
+                    <div class="row my-4 justify-content-center">
+                        <div class="searchContainer">
+                            <nav class="navbar bg-body-tertiary">
+                                <div class="container-fluid d-flex justify-content-center">
+                                    <form class="d-flex" id="lookUpTeam" role="search">
+                                        <input list="teamList" class="form-control me-2 searchBar" type="search" placeholder="Enter team name (e.g. Sentinels)" aria-label="Search">
+                                        <button class="btn btn-outline-custom" type="submit">Search</button>
+                                    </form>
+                                    <datalist id="teamList"></datalist>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col p-0">
+            <div class="white-bg">
+                <h2>Find team based on region</h2>
+                <div class="row removeMargin">
+                    <div onclick="redirect('/region?region=Americas')" class="region col text-center removePadding">
+                        <img src="images/Americas.png" class="img-fluid">
+                        <h2>Americas</h2>
+                    </div>
+                    <div onclick="redirect('/region?region=CN')" class="region col text-center removePadding">
+                        <img src="images/CN.png" class="img-fluid">
+                        <h2>CN</h2>
+                    </div>
+                </div>
+                <div class="row removeMargin">
+                    <div onclick="redirect('/region?region=EMEA')" class="region col text-center removePadding">
+                        <img src="images/EMEA.png" class="img-fluid">
+                        <h2>EMEA</h2>
+                    </div>
+                    <div onclick="redirect('/region?region=Pacific')" class="region col text-center removePadding">
+                        <img src="images/Pacific.png" class="img-fluid">
+                        <h2 >Pacific</h2>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+     </div>
+    <script>
+    searchTeamList = document.getElementById("teamList");
+    grabTeams().then(teams => {
+        teams.AmericasTeams.forEach(theTeam => {
+            if(theTeam.players.length!=0) {
+                searchTeamList.innerHTML += '<option value="' + theTeam.name  + '"></option>';
+            }
+        });
+        teams.CNTeams.forEach(theTeam => {
+            if(theTeam.players.length!=0) {
+                searchTeamList.innerHTML += '<option value="' + theTeam.name  + '"></option>';
+            }
+        });
+        teams.EMEATeams.forEach(theTeam => {
+            if(theTeam.players.length!=0) {
+                searchTeamList.innerHTML += '<option value="' + theTeam.name  + '"></option>';
+            }
+        });
+        teams.PacificTeams.forEach(theTeam => {
+            if(theTeam.players.length!=0) {
+                searchTeamList.innerHTML += '<option value="' + theTeam.name  + '"></option>';
+            }
+        });
+    }).catch(error => {
+        console.error(error);
+    });
+
+    document.getElementById("lookUpTeam").addEventListener('submit', function(event) {
+        event.preventDefault();
+        const input = document.querySelector(".searchBar");
+        grabTeams().then(teams => {
+            if(null != teams.AmericasTeams.find(team => team.name == input.value)) {
+                redirect(`/team?region=Americas&team=` + input.value);
+            } else if(null != teams.CNTeams.find(team => team.name == input.value)) {
+                redirect(`/team?region=CN&team=` + input.value);
+            } else if(null != teams.EMEATeams.find(team => team.name == input.value)) {
+                redirect(`/team?region=EMEA&team=` + input.value);
+            } else if(null != teams.PacificTeams.find(team => team.name == input.value)) {
+                redirect(`/team?region=Pacific&team=` + input.value);
+            } else {
+                console.log(input.value + " not found");
+            }
+        }).catch(error => {
+            console.error(error);
+        });
+    
+    });
+    </script>
+
+
+    <script>
+    function redirect(region) {
+        window.location.href = region;
+    }
+    </script>
+
+</body>
+
+</html>

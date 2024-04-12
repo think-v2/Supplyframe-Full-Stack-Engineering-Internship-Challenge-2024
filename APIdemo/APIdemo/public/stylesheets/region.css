@@ -1,0 +1,38 @@
+.red-bg {
+    height: 5rem;
+    width: 100vw;
+    background-color: #FF4655;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 3rem;
+}
+
+.team {
+    font-weight: bold;
+    color: #FF4655;
+    border: 2px solid transparent;
+    padding: 10px;
+    text-align: center;
+    width: 10rem;
+    height: 5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.team:hover {
+    color: #fff;
+    background-color: #FF4655;
+    border-color: #FF4655;
+    transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+#teamContainer {
+    place-items: center;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-gap: 20px;
+}
