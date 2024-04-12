@@ -46,11 +46,11 @@ h2 {
     border-color: #FF4655;
 }
 
-    .btn-outline-custom:hover {
-        color: #fff;
-        background-color: #FF4655;
-        border-color: #FF4655;
-    }
+.btn-outline-custom:hover {
+    color: #fff;
+    background-color: #FF4655;
+    border-color: #FF4655;
+}
 
 .navbar {
     border-radius: .5rem;
@@ -64,11 +64,11 @@ h2 {
     cursor: pointer;
 }
 
-    .region:hover {
-        color: #fff;
-        border-color: #FF4655;
-        background-color: #FF4655;
-    }
+.region:hover {
+    color: #fff;
+    border-color: #FF4655;
+    background-color: #FF4655;
+}
 
 img {
     background-color: #fff;
@@ -77,4 +77,15 @@ img {
 
 .resultBox:hover {
     color: #FF4655;
+}
+
+.logo {
+    position: absolute;
+    left: .25rem;
+    top: .25rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;
+    border-radius: 0rem;
+    cursor: pointer;
 }

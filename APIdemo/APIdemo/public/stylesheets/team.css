@@ -44,3 +44,14 @@ img {
     height: 20rem;
     width: 2vh;
 }
+
+.logo {
+    position: absolute;
+    left: .25rem;
+    top: .25rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;
+    border-radius: 0rem;
+    cursor: pointer;
+}
