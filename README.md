@@ -21,6 +21,7 @@
  
  ### Step 6 (Optional)
  Execute ```jest.bat``` to jest test the function used to package players
+ Note: Make sure to close ```run.bat``` before using this or it will not work
 
 # Technical Feature List
  ### MUST INCLUDE
